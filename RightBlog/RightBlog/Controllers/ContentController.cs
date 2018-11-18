@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace RightBlog.Controllers
 {
-    public class HomeController : Controller
+    public class ContentController : Controller
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Index");
         }
 
         public ActionResult About()
