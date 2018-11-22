@@ -1,0 +1,39 @@
+﻿@model  RightBlog.Models.ArticleList
+ 
+@{
+    ViewBag.Title = "Список компьютеров";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+ 
+<h2>Список компьютеров</h2>
+@using (Html.BeginForm())
+{
+    <label for="ComputerName">Поиск по соответствию</label>
+    <input type="text" name="ComputerName" value="@Model.Filter.Title" />
+    <label for="Year">Поиск по году</label>
+    <input type="text" name="Year" value="@Model.Filter.Year" />
+    <input type="submit" value="Поиск" />
+}
+<p>
+    @Html.ActionLink("Добавить", "CreateArticle")
+</p>
+<table class="table">
+    <tr>
+        <th>Модель</th>
+        <th>Год</th>
+        <th></th>
+    </tr>
+ 
+    @foreach (var item in Model.Articles) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePublish)
+            </td>
+            <td>
+                @Html.ActionLink("Изменить", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })|
+            </td>
+        </tr>
+    }
+</table>
