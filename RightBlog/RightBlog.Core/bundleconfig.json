@@ -1,0 +1,25 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ]
+
+},
+{
+  "outputFileName": "wwwroot/js/bootstrap.js",
+  "inputFiles": [
+    "node_modules/bootstrap/dist/js/bootstrap.js"
+  ],
+  // Optionally specify minification options
+  "minify": {
+    "enabled": false,
+    "renameLocals": false
+  },
+  // Optionally generate .map file
+  "sourceMap": false
+
+}
