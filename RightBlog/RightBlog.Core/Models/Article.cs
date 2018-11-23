@@ -53,8 +53,11 @@ namespace RightBlog.Core.Models
 
     public enum TypeArticle
     {
+        [Display(Name = "TechnoCrunch")]
         TechnoCrunch = 1,
+        [Display(Name = "Life")]
         Life = 2,
+        [Display(Name = "GamblingAddiction")]
         GamblingAddiction = 3
     }
 }

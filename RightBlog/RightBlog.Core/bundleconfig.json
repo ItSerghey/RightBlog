@@ -1,25 +1,44 @@
-{
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
-  ]
+[
+  {
+    "outputFileName": "wwwroot/lib/bootsrap/bootstrap.js",
+    "inputFiles": [
+      "node_modules/bootstrap/dist/js/bootstrap.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    },
+    // Optionally generate .map file
+    "sourceMap": false
 
-},
-{
-  "outputFileName": "wwwroot/js/bootstrap.js",
-  "inputFiles": [
-    "node_modules/bootstrap/dist/js/bootstrap.js"
-  ],
-  // Optionally specify minification options
-  "minify": {
-    "enabled": false,
-    "renameLocals": false
   },
-  // Optionally generate .map file
-  "sourceMap": false
+  {
+    "outputFileName": "wwwroot/lib/bootsrap/bootstrap.css",
+    "inputFiles": [
+      "node_modules/bootstrap/dist/css/bootstrap.css"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    },
+    // Optionally generate .map file
+    "sourceMap": false
 
-}
+  },
+  {
+    "outputFileName": "wwwroot/lib/popper/popper.js",
+    "inputFiles": [
+      "node_modules/popper.js/dist/css/popper.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    },
+    // Optionally generate .map file
+    "sourceMap": false
+
+  }
+]
