@@ -1,45 +1,36 @@
 ﻿@model List<Article>
-<div class="card-deck">
-    <div class="card">
-        <img class="card-img-top" src="https://69.media.tumblr.com/c950471b3826756c47b5168ae1d061cd/tumblr_pi5mbk5SBY1tlrio8o1_400.jpg" alt="Card image cap">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        <div class="card-footer text-muted">
-            <div class="d-flex">
-                <div class="d-flex justify-content-start"> <p> 14 октября 2018 : 2 просмотра</p></div>
-                <div class="d-flex justify-content-end"> <a href="\">link</a></div>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://69.media.tumblr.com/c950471b3826756c47b5168ae1d061cd/tumblr_pi5mbk5SBY1tlrio8o1_400.jpg" alt="title image">
-        <div class="card-body d-flex align-items-start flex-column ">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-            <div class="mt-auto"> <a href="#" class="btn btn-primary">Go somewhere</a></div>
 
-        </div>
-        <div class="card-footer text-muted">
-            <div class="d-flex">
-                <div class="d-flex justify-content-start"> <p> 14 октября 2018 : 2 просмотра</p></div>
-                <div class="d-flex justify-content-end"> <a href="\">link</a></div>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://69.media.tumblr.com/c950471b3826756c47b5168ae1d061cd/tumblr_pi5mbk5SBY1tlrio8o1_400.jpg" alt="title image">
-        <div class="card-body d-flex align-items-start flex-column">
 
-            <h5 class="card-title">Как написать свой блог и не облажаться</h5>
-            <p class="card-text">Изучив тему блогинга и различные СЕО приёмы для продвижения сайта, я решил написать свой идеальный блог...</p>
+@{ var countArticles = 0; }
+    @foreach (var prevBadge in Model)
+    {
+        if (countArticles == 3)
+        {
+            countArticles = 0;
+        }
 
-            <div class="mt-auto">
-                <a href="#" class="btn btn-primary">ДАЛЬШЕ</a>
+
+
+        if (countArticles == 0)
+        {
+            @:<div class="card-deck">
+    }
+
+    <div class="card cardSize">
+        @if (prevBadge.HasImage())
+        {
+            <img class="card-img-top" alt="title image" src="@Url.Action("GetImage", new { id=prevBadge.ImageId})" />
+        }
+            <div class="card-body d-flex align-items-start flex-column">
+
+                <h5 class="card-title">@prevBadge.Title</h5>
+                <p class="card-text">@prevBadge.Description</p>
+            
+                <div class="mt-auto w-100">
+                    <a href="#" class="btn btn-primary">ДАЛЬШЕ</a>
+                    <span class="float-right" style="line-height: 35px;">  <span class="badge badge-info">@prevBadge.TypeArticle</span></span>
+                </div>
             </div>
-        </div>
         <div class="card-footer text-muted">
             <div class="d-flex">
                 <p> 14 октября 2018 : 2 просмотра</p>
@@ -48,31 +39,10 @@
         </div>
     </div>
 
+    @if (countArticles == 2){
+        @:</div>
+        }
+        countArticles++;   
+}
 
 
-
-
-
-    <div class="card">
-        <img class="card-img-top" src="https://69.media.tumblr.com/c950471b3826756c47b5168ae1d061cd/tumblr_pi5mbk5SBY1tlrio8o1_400.jpg" alt="title image">
-        <div class="card-body d-flex align-items-start flex-column">
-
-            <h5 class="card-title">@Model[0].Title</h5>
-            <p class="card-text">@Model[0].Description</p>
-
-            <div class="mt-auto">
-                <a href="#" class="btn btn-primary">ДАЛЬШЕ</a>
-            </div>
-        </div>
-        <div class="card-footer text-muted">
-            <div class="d-flex">
-                <p> 14 октября 2018 : 2 просмотра</p>
-                <div class="ml-auto"> <a href="\">link</a></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script type="text/javascript">
-
-</script>

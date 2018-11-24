@@ -35,6 +35,16 @@ namespace RightBlog.Core.Controllers
             return View("ContentPreview", articles);
         }
 
+        public async Task<ActionResult> GetImage(string id)
+        {
+            var image = await _articleContext.GetImage(id);
+            if (image == null)
+            {
+                return NotFound();
+            }
+            return File(image, "image/png");
+        }
+
         // GET: TestModels/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {

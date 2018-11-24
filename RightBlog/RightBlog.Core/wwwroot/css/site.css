@@ -35,3 +35,9 @@ body {
         display: none;
     }
 }
+
+/*Preview Article*/
+.cardSize{
+    width:360px;
+    margin-top:15px;
+}
