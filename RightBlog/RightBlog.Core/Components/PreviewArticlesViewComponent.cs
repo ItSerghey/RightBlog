@@ -19,7 +19,7 @@ namespace RightBlog.Core.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var articles = await _articleContext.GetArticles(null, null);
+            var articles = await _articleContext.GetArticles(true, null, null);
             return View("~/Views/Components/ContentPreview.cshtml", articles); 
         }
     }

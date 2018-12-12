@@ -1,0 +1,55 @@
+﻿@model Article
+
+@{
+    ViewData["Title"] = Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+} <article itemscope itemtype="https://schema.org/Article">
+    <div class=" text-white bg-dark">
+        <meta itemprop="inLanguage" content="ru">
+        @*<meta itemprop="isFamilyFriendly" content="true">*@
+        <link itemprop="mainEntityOfPage" href="@Url.Action("Article","Content", new { id = Model.UrlSeo })" />
+        <figure class="m-3 row">
+
+
+
+            <picture itemprop="associatedMedia image" itemscope itemtype="http://schema.org/ImageObject">
+                <meta itemprop="representativeOfPage" content="true">
+                <link itemprop="url" href="@Url.Action("GetImage", new { id=Model.ImageId})">
+                <meta itemprop="width" content="730">
+                <meta itemprop="height" content="350">
+                <img style="width: 100%;object-fit: cover; height:350px" alt="@Model.Title" itemprop="contentUrl" src="@Url.Action("GetImage", new { id=Model.ImageId})" />
+            </picture>
+        </figure>
+        <div class="m-3 row">
+            <h1 class="col-12 display-3 text-center" itemprop="headline name">@Html.DisplayFor(model => model.Title)</h1>
+        </div>
+        <div class="m-3 row"> <h5 class="text-center col-12" itemprop="description">  @Html.DisplayFor(model => model.Description)</h5></div>
+        <section itemprop="articleBody"> <div class="m-3 row"> <p class="card-text lead col-12"> @Html.DisplayFor(model => model.Body)</p></div></section>
+        <hr />
+
+        <div class="m-3 row">
+            <div itemtype="https://schema.org/Person" itemscope="itemscope" itemprop="author" class="col-6  text-left">
+                <meta itemprop="name" content="@Html.DisplayFor(model => model.Author)">
+                <author itemprop="name">  @Html.DisplayFor(model => model.Author)</author>
+            </div>
+            <time class="col-6 text-right" datetime="@Model.DatePublish.ToString("yyyy-MM-dd hh:mm")" itemprop="datePublished">    @Html.DisplayFor(model => model.DatePublish)</time>
+
+            <div itemtype="https://schema.org/Organization" itemscope="itemscope" itemprop="publisher">
+                <link itemprop="url" href="https://itserghey.ru/">
+                <meta itemprop="name" content="ItSerghey">
+
+                <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                    <link itemprop="url" href="https://www.itserghey.ru/images/itserghey-logo.png">
+                    <link itemprop="image" href="https://www.itserghey.ru/images/itserghey-logo.png">
+                    <meta itemprop="width" content="60">
+                    <meta itemprop="height" content="60">
+                </span>
+                <meta itemprop="address" content="https://itserghey.ru/">
+                <meta itemprop="telephone" content="">
+            </div>
+
+        </div>
+
+        <div class="m-3 row p-3">    @Html.ActionLink("НАЗАД", "Index", "Content", null, new { @class = "btn btn-primary " })</div>
+    </div>
+</article>

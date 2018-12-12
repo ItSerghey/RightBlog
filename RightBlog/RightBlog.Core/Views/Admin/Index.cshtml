@@ -1,7 +1,7 @@
 ﻿@model  ArticleList
  
 @{
-    ViewBag.Title = "Список компьютеров";
+    ViewBag.Title = "Список статей";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
  
@@ -25,7 +25,12 @@
     </tr>
  
     @foreach (var item in Model.Articles) {
-        <tr>
+        var bg = "";
+        if (!item.IsPublished)
+        {
+            bg = "class=bg-danger";
+        }
+        <tr @bg>
             <td>@Html.DisplayFor(modelItem => item.Title)</td>
             <td>
                 @Html.DisplayFor(modelItem => item.DatePublish)

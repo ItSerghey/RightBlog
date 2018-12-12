@@ -22,14 +22,12 @@ namespace RightBlog.Core.Controllers
         // GET: TestModels
         public async Task<IActionResult> Index()
         {
-            var a = _articleContext.Articles;
             return View();
-           // return View(await _context.TestModel.ToListAsync());
         }
 
         public async Task<ActionResult> GetArticles()
         {
-            var articles = await _articleContext.GetArticles(null, null);
+            var articles = await _articleContext.GetArticles(true,null, null);
             //  var model = new ComputerList { Computers = computers, Filter = filter };
 
             return View("ContentPreview", articles);
@@ -43,6 +41,13 @@ namespace RightBlog.Core.Controllers
                 return NotFound();
             }
             return File(image, "image/png");
+        }
+
+[HttpGet("content/article/{seoUrl}", Name = "Article")]
+        public async Task<ActionResult> Article(string seoUrl)
+        {
+           var article = await _articleContext.GetArticleBySeoUrl(seoUrl);
+            return View("Article", article);
         }
 
         // GET: TestModels/Details/5

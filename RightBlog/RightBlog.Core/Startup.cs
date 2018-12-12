@@ -12,6 +12,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using RightBlog.Core.Models;
 using RightBlog.Core.Data;
+using Microsoft.AspNetCore.Routing;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Routing;
 
 namespace RightBlog.Core
 {
@@ -27,6 +34,7 @@ namespace RightBlog.Core
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddMvc();
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -59,11 +67,25 @@ namespace RightBlog.Core
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+
             app.UseMvc(routes =>
             {
+
+
+                           //               routes.MapRoute(
+                           //          name: "getImage",
+                           //template: "{controller=Content}/{action=GetImage}/{id?}");
+
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Content}/{action=Index}/{id?}");
+                name: "default",
+                template: "{controller=Content}/{action=Index}/{id?}");
+
+                //routes.MapRoute(
+                //name: "article",
+                //template: "{controller=Content}/{action=Article}/{seoUrl}");
+            //});
+
+
             });
         }
     }

@@ -24,7 +24,7 @@ namespace RightBlog.Core.Data
         }
 
 
-        public async Task<List<Article>> GetArticles(int? datePublish, string title)
+        public async Task<List<Article>> GetArticles(bool? isPublish, int? datePublish, string title)
         {
             // filter builder
             var builder = new FilterDefinitionBuilder<Article>();
@@ -39,6 +39,10 @@ namespace RightBlog.Core.Data
                 filter = filter & builder.Eq("DatePublish", datePublish.Value);
             }
 
+            if (isPublish.HasValue)
+            {
+                filter = filter & builder.Eq("IsPublished", isPublish.Value);
+            }
             return await Articles.Find(filter).ToListAsync();
         }
 
@@ -48,6 +52,11 @@ namespace RightBlog.Core.Data
         public async Task<Article> GetArticle(string id)
         {
             return await Articles.Find(new BsonDocument("_id", new ObjectId(id))).FirstOrDefaultAsync();
+        }
+
+        public async Task<Article> GetArticleBySeoUrl(string seoUrl)
+        {
+            return await Articles.Find(new BsonDocument("UrlSeo", seoUrl)).FirstOrDefaultAsync();
         }
 
         public async Task<string> Create(Article article)

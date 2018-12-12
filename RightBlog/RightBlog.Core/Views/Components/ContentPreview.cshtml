@@ -4,17 +4,15 @@
 @{ var countArticles = 0; }
     @foreach (var prevBadge in Model)
     {
-        if (countArticles == 3)
+        if (countArticles == 2)
         {
             countArticles = 0;
         }
 
-
-
         if (countArticles == 0)
         {
             @:<div class="card-deck">
-    }
+        }
 
     <div class="card cardSize">
         @if (prevBadge.HasImage())
@@ -27,7 +25,7 @@
                 <p class="card-text">@prevBadge.Description</p>
             
                 <div class="mt-auto w-100">
-                    <a href="#" class="btn btn-primary">ДАЛЬШЕ</a>
+                    @Html.ActionLink("ДАЛЬШЕ","Article", "Content", new { id = prevBadge.UrlSeo } , new { @class = "btn btn-primary" })
                     <span class="float-right" style="line-height: 35px;">  <span class="badge badge-info">@prevBadge.TypeArticle</span></span>
                 </div>
             </div>
@@ -39,7 +37,8 @@
         </div>
     </div>
 
-    @if (countArticles == 2){
+    @if (countArticles == 1 || prevBadge == Model.Last())
+    {
         @:</div>
         }
         countArticles++;   

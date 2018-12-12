@@ -25,6 +25,7 @@ namespace RightBlog.Core.Models
         public string Body { get; set; }
 
         [Display(Name = "Год выпуска")]
+        [DataType(DataType.DateTime)]
         public DateTime DatePublish { get; set; }
 
         public string ImageId { get; set; }
@@ -36,12 +37,31 @@ namespace RightBlog.Core.Models
         {
             return !String.IsNullOrWhiteSpace(ImageId);
         }
+
+        [Display(Name = "Автор")]
+        public string Author { get; set; }
+
+        [Display(Name = "СЕО ссылка")]
+        public string UrlSeo { get; set; }
+
+        [Display(Name = "Метатег название")]
+        public string MetaTitle { get; set; }
+
+
+        [Display(Name = "Метатег описание")]
+        [DataType(DataType.MultilineText)]
+        public string MetaDescription { get; set; }
+
+        [Display(Name = "Опубликовано")]
+        public bool IsPublished { get; set; }
     }
 
 
     public class ArticleFilter
     {
+
         public string Title { get; set; }
+        public bool? IsPublished { get; set; }
         public int? Year { get; set; }
     }
 
