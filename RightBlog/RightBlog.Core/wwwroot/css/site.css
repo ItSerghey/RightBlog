@@ -36,6 +36,14 @@ body {
     }
 }
 
+.laoyoutpadding {
+    padding-top: 20px;
+}
+
+.logo {
+    height: 48px;
+}
+
 /*Preview Article*/
 .cardSize{
     width:360px;

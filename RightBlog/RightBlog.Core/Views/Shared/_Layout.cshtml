@@ -13,7 +13,9 @@
 <body style="background-color: #565353;">
     @*<div class="container">*@
     <nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark">
+        <img class="logo" src="~/images/itserghey-logo.png" />
         <a class="navbar-brand" href="/">it.sergHEY</a>
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,8 +23,8 @@
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     @{ @using RightBlog.Core.Extensions;
-                        @using System.ComponentModel.DataAnnotations;
-                        var a = TypeArticle.Life.GetDisplayName();
+                    @using System.ComponentModel.DataAnnotations;
+                    var a = TypeArticle.Life.GetDisplayName();
 
 
                     }
@@ -40,7 +42,7 @@
     </nav>
     @*</div>*@
 
-    <div class="container body-content">
+    <div class="container body-content laoyoutpadding">
         <div class="row">
             <div class="col-md-8">        @RenderBody()</div>
             <div class="col-md-4">     <h1>right side</h1></div>
