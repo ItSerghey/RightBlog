@@ -1,0 +1,61 @@
+﻿@model IEnumerable<RightBlog.Core.Models.Category>
+
+@{
+    ViewData["Title"] = "Category";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Category</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "CreateCategory")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Label)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sort)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Display)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Label)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Url)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sort)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Display)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditCategory", new {  id=item.Id  }) |
+                @Html.ActionLink("Delete", "DeleteCategory", new { id = item.Id },new {onclick = "return confirm('Вы уверены, что хотите удалить категорию?');"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

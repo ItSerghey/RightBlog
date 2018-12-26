@@ -46,6 +46,7 @@ namespace RightBlog.Core
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<ArticleContext>();
+            services.AddTransient<CategoryContext>();
             //services..AddDbContext<MongoContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("RightBlogCoreContext")));
         }
@@ -70,22 +71,9 @@ namespace RightBlog.Core
 
             app.UseMvc(routes =>
             {
-
-
-                           //               routes.MapRoute(
-                           //          name: "getImage",
-                           //template: "{controller=Content}/{action=GetImage}/{id?}");
-
                 routes.MapRoute(
                 name: "default",
                 template: "{controller=Content}/{action=Index}/{id?}");
-
-                //routes.MapRoute(
-                //name: "article",
-                //template: "{controller=Content}/{action=Article}/{seoUrl}");
-            //});
-
-
             });
         }
     }

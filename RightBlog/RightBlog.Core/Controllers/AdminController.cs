@@ -14,10 +14,12 @@ namespace RightBlog.Core.Controllers
     public class AdminController : Controller
     {
         private readonly ArticleContext _articleContext;
+        private readonly CategoryContext _categoryContext;
 
-        public AdminController(ArticleContext articleContext)
+        public AdminController(ArticleContext articleContext, CategoryContext categoryContext)
         {
             _articleContext = articleContext;
+            _categoryContext = categoryContext;
         }
         // GET: Admin
         public async Task<ActionResult> Index(ArticleFilter filter)
@@ -29,7 +31,7 @@ namespace RightBlog.Core.Controllers
 
         public ActionResult CreateArticle()
         {
-            return View("CreateArticle");
+            return View("Article/CreateArticle");
         }
         [HttpPost]
         public async Task<ActionResult> CreateArticle(Article article, IFormFile articleImage)
@@ -52,7 +54,7 @@ namespace RightBlog.Core.Controllers
 
                 return RedirectToAction("Index");
             }
-            return View("CreateArticle", article);
+            return View("Article/CreateArticle", article);
         }
 
 
@@ -84,18 +86,18 @@ namespace RightBlog.Core.Controllers
             return File(image, "image/png");
         }
 
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> EditArticle(string id)
         {
             Article article = await _articleContext.GetArticle(id);
             if (article == null)
                 return NotFound();
-            return View(article);
+            return View("Article/EditArticle",article);
         }
         [HttpPost]
-        public async Task<ActionResult> Edit(Article article, IFormFile articleImage)
+        public async Task<ActionResult> EditArticle(Article article, IFormFile articleImage)
         {
 
-            TypeArticle.GamblingAddiction.GetDisplayName();
+           // TypeArticle.GamblingAddiction.GetDisplayName();
             if (ModelState.IsValid)
             {
                 await _articleContext.Update(article);
@@ -114,10 +116,59 @@ namespace RightBlog.Core.Controllers
             }
             return View(article);
         }
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> DeleteArticle(string id)
         {
             await _articleContext.Remove(id);
             return RedirectToAction("Index");
         }
+
+        public async Task<ActionResult> CategoryList()
+        {
+            var articles = await _categoryContext.GetCategories(null);
+            return View("Category/Category", articles);
+        }
+
+        [HttpGet]
+        public ActionResult CreateCategory()
+        {
+            return View("Category/CreateCategory");
+        }
+        [HttpPost]
+        public async Task<ActionResult> CreateCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+               _categoryContext.Create(category);
+                return RedirectToAction("CategoryList");
+            }
+            return View("Category/CreateCategory", category);
+        }
+
+        public async Task<ActionResult> EditCategory(string id)
+        {
+            Category category = await _categoryContext.GetCategory(id);
+            if (category == null)
+                return NotFound();
+            return View("Category/EditCategory", category);
+        }
+        [HttpPost]
+        public async Task<ActionResult> EditCategory(Category category)
+        {
+
+         //   TypeArticle.GamblingAddiction.GetDisplayName();
+            if (ModelState.IsValid)
+            {
+                await _categoryContext.Update(category);
+                return RedirectToAction("CategoryList");
+            }
+            return View("Category/EditCategory",category);
+        }
+
+        public async Task<ActionResult> DeleteCategory(string id)
+        {
+            await _categoryContext.Remove(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -1,0 +1,13 @@
+﻿@model List<Category>
+
+<div class="form-group">
+    <label class="control-label col-md-2" for="CategoryId">Тип статьи</label>
+    @Html.LabelFor(model => model, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DropDownList("CategoryId", new SelectList(Model.Select(m => new { Value = m.Id, Text = m.Title }), "Value", "Text", Model.FirstOrDefault(c => c.Selected==true) != null? Model.First(c => c.Selected).Id:""), new { @class = "form-control" })
+    </div>
+</div>
+
+
+
+

@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RightBlog", "RightBlog\RightBlog.csproj", "{7C7128D6-6FFE-4821-8BE3-6A626966AB97}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RightBlog.Tests", "RightBlog.Tests\RightBlog.Tests.csproj", "{52F7F05B-1B0E-49E7-ACBD-C06BE0266860}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RightBlog.Core", "RightBlog.Core\RightBlog.Core.csproj", "{67AE61ED-C671-4853-A5D3-A798BE3C3560}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RightBlog.Core", "RightBlog.Core\RightBlog.Core.csproj", "{67AE61ED-C671-4853-A5D3-A798BE3C3560}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7C7128D6-6FFE-4821-8BE3-6A626966AB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C7128D6-6FFE-4821-8BE3-6A626966AB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C7128D6-6FFE-4821-8BE3-6A626966AB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C7128D6-6FFE-4821-8BE3-6A626966AB97}.Release|Any CPU.Build.0 = Release|Any CPU
 		{52F7F05B-1B0E-49E7-ACBD-C06BE0266860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{52F7F05B-1B0E-49E7-ACBD-C06BE0266860}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52F7F05B-1B0E-49E7-ACBD-C06BE0266860}.Release|Any CPU.ActiveCfg = Release|Any CPU

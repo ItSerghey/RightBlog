@@ -36,8 +36,8 @@
                 @Html.DisplayFor(modelItem => item.DatePublish)
             </td>
             <td>
-                @Html.ActionLink("Изменить", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })|
+                @Html.ActionLink("Изменить", "EditArticle", new { id=item.Id }) |
+                @Html.ActionLink("Удалить", "DeleteArticle", new { id = item.Id }, new { onclick = "return confirm('Вы уверены, что хотите удалить статью?');" })|
             </td>
         </tr>
     }

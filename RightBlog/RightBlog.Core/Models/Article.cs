@@ -30,8 +30,7 @@ namespace RightBlog.Core.Models
 
         public string ImageId { get; set; }
 
-        [Display(Name = "Тип статьи")]
-        public TypeArticle TypeArticle { get; set; }
+        public string CategoryId { get; set; }
 
         public bool HasImage()
         {
@@ -47,13 +46,14 @@ namespace RightBlog.Core.Models
         [Display(Name = "Метатег название")]
         public string MetaTitle { get; set; }
 
-
         [Display(Name = "Метатег описание")]
         [DataType(DataType.MultilineText)]
         public string MetaDescription { get; set; }
 
         [Display(Name = "Опубликовано")]
         public bool IsPublished { get; set; }
+
+        public Category Badge { get; set; }
     }
 
 
@@ -71,13 +71,4 @@ namespace RightBlog.Core.Models
         public ArticleFilter Filter { get; set; }
     }
 
-    public enum TypeArticle
-    {
-        [Display(Name = "TechnoCrunch")]
-        TechnoCrunch = 1,
-        [Display(Name = "Life")]
-        Life = 2,
-        [Display(Name = "GamblingAddiction")]
-        GamblingAddiction = 3
-    }
 }

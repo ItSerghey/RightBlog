@@ -11,7 +11,6 @@
    
 </head>
 <body style="background-color: #565353;">
-    @*<div class="container">*@
     <nav class="navbar fixed-top  navbar-expand-lg navbar-dark bg-dark">
         <img class="logo" src="~/images/itserghey-logo.png" />
         <a class="navbar-brand" href="/">it.sergHEY</a>
@@ -20,27 +19,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse " id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    @{ @using RightBlog.Core.Extensions;
-                    @using System.ComponentModel.DataAnnotations;
-                    var a = TypeArticle.Life.GetDisplayName();
-
-
-                    }
-                    <a class="nav-link" href="#">@Html.Label(TypeArticle.Life.GetDisplayName(), TypeArticle.GamblingAddiction.GetAttribute<DisplayAttribute>().GetName(), new { htmlAttributes = new { @class = "form-control" } })</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Гемификация</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">365</a>
-                </li>
-            </ul>
+            @await Component.InvokeAsync("MenuCategories")
         </div>
-
     </nav>
-    @*</div>*@
 
     <div class="container body-content laoyoutpadding">
         <div class="row">
