@@ -17,7 +17,7 @@
     <div class="card cardSize">
         @if (prevBadge.HasImage())
         {
-            <img class="card-img-top" alt="title image" src="@Url.Action("GetImage", new { id=prevBadge.ImageId})" />
+            <img class="card-img-top" alt="title image" src="@Url.Action("GetImage", new { id = prevBadge.ImageId })" />
         }
             <div class="card-body d-flex align-items-start flex-column">
 
@@ -25,8 +25,17 @@
                 <p class="card-text">@prevBadge.Description</p>
             
                 <div class="mt-auto w-100">
-                    @Html.ActionLink("ДАЛЬШЕ","Article", "Content", new { id = prevBadge.UrlSeo } , new { @class = "btn btn-primary" })
-                    @*<span class="float-right" style="line-height: 35px;">  <span class="badge badge-info">@prevBadge.TypeArticle</span></span>*@
+                    @Html.ActionLink("ДАЛЬШЕ", "Article", "Content", new { id = prevBadge.UrlSeo }, new { @class = "btn btn-primary" })
+
+                    @{ 
+                        var badge = prevBadge.Badge != null ? prevBadge.Badge.Title : "";
+                        var urlBadge = prevBadge.Badge != null ? prevBadge.Badge.Url : "";
+                    }
+                    <span class="float-right" style="line-height: 35px;">
+                        <a href="@urlBadge">
+                            <span class="badge badge-info">@badge</span>
+                        </a>
+                    </span>
                 </div>
             </div>
         <div class="card-footer text-muted">

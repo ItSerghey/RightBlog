@@ -23,8 +23,8 @@ namespace RightBlog.Core.Components
         {
             var articles = await _articleContext.GetArticles(true, null, null);
             var categories = await _categoryContext.GetCategories(true);
-            //TODO make a badge great again
-            articles.ForEach(c =>  c.Badge =  categories.Exists(a => a.Id == c.CategoryId) ?  categories.FirstOrDefault(a => a.Id == c.CategoryId) : null);
+   
+            articles.ForEach(c =>  c.Badge =  categories.Exists(a => a.Id == c.CategoryId) ?  categories.First(a => a.Id == c.CategoryId && a.Display==true) : null);
 
             return View("~/Views/Components/ContentPreview.cshtml", articles); 
         }
